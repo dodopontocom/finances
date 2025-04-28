@@ -11,7 +11,7 @@ const PersonBadge: React.FC<PersonBadgeProps> = ({ person, type = 'payer' }) => 
   const personLabels: Record<PaymentPerson, string> = {
     partner1: 'Thaís',
     partner2: 'Rodolfo',
-    shared: 'Shared',
+    shared: 'Compartilhado',
   };
 
   const getPersonColor = (person: PaymentPerson) => {
