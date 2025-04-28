@@ -1,18 +1,17 @@
 export const formatDate = (dateString: string): string => {
   const date = new Date(dateString);
-  return date.toLocaleDateString('pt-BR', {
-    day: '2-digit',
-    month: '2-digit',
-    year: 'numeric'
-  }); // Formato: DD/MM/AAAA
+  return date.toLocaleDateString('en-US', {
+    year: 'numeric',
+    month: 'short',
+    day: 'numeric',
+  });
 };
 
 export const formatCurrency = (amount: number): string => {
-  return new Intl.NumberFormat('pt-BR', {
+  return new Intl.NumberFormat('en-US', {
     style: 'currency',
-    currency: 'BRL',
-    minimumFractionDigits: 2
-  }).format(amount); // Formato: R$ 1.234,56
+    currency: 'USD',
+  }).format(amount);
 };
 
 export const getDaysUntilDue = (dueDate: string): number => {
@@ -37,16 +36,10 @@ export const isOverdue = (dueDate: string): boolean => {
 };
 
 export const getCurrentMonth = (): string => {
-  return new Date().toLocaleDateString('pt-BR', { 
-    month: 'long', 
-    year: 'numeric' 
-  }).replace(' de', ''); // Formato: "abril 2024" (sem "de")
+  return new Date().toLocaleDateString('en-US', { month: 'long', year: 'numeric' });
 };
 
 export const getMonthFromDate = (dateString: string): string => {
   const date = new Date(dateString);
-  return date.toLocaleDateString('pt-BR', { 
-    month: 'long', 
-    year: 'numeric' 
-  }).replace(' de', ''); // Formato: "abril 2024" (sem "de")
+  return date.toLocaleDateString('en-US', { month: 'long', year: 'numeric' });
 };
