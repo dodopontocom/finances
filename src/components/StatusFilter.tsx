@@ -13,11 +13,11 @@ const StatusFilter: React.FC<StatusFilterProps> = ({
   counts
 }) => {
   const filters: Array<{ value: TransactionStatus | 'all', label: string }> = [
-    { value: 'all', label: 'All' },
-    { value: 'pending', label: 'Pending' },
-    { value: 'upcoming', label: 'Upcoming' },
-    { value: 'overdue', label: 'Overdue' },
-    { value: 'paid', label: 'Paid' },
+    { value: 'all', label: 'Todos' },
+    { value: 'pending', label: 'Pendentes' },
+    { value: 'upcoming', label: 'Futuras' },
+    { value: 'overdue', label: 'Atrasadas' },
+    { value: 'paid', label: 'Pagas' },
   ];
 
   const getFilterColor = (status: TransactionStatus | 'all') => {
