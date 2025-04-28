@@ -15,12 +15,12 @@ const IncomeForm: React.FC<IncomeFormProps> = ({ income, onClose }) => {
     amount: 0,
     date: new Date().toISOString().split('T')[0],
     receivedBy: 'partner1',
-    category: 'Salary',
+    category: 'Salário',
     isRecurring: false,
   });
 
   const categories = [
-    'Salary', 'Bonus', 'Rental Income', 'Investments', 'Side Hustle', 'Other'
+    'Salário', 'Bônus', 'Aluguel', 'Investimentos', 'Freelance', 'Outros'
   ];
 
   useEffect(() => {
@@ -76,7 +76,7 @@ const IncomeForm: React.FC<IncomeFormProps> = ({ income, onClose }) => {
       <div className="bg-white rounded-lg shadow-lg w-full max-w-md animate-slide-up overflow-hidden">
         <div className="flex justify-between items-center border-b p-4">
           <h2 className="text-xl font-semibold">
-            {income ? 'Edit Income' : 'Add New Income'}
+            {income ? 'Editar Receita' : 'Adicionar Nova Receita'}
           </h2>
           <button 
             onClick={onClose}
@@ -90,7 +90,7 @@ const IncomeForm: React.FC<IncomeFormProps> = ({ income, onClose }) => {
           <div className="space-y-4">
             <div>
               <label htmlFor="description" className="block text-sm font-medium text-text-secondary mb-1">
-                Description
+                Descrição
               </label>
               <input
                 type="text"
@@ -105,7 +105,7 @@ const IncomeForm: React.FC<IncomeFormProps> = ({ income, onClose }) => {
             
             <div>
               <label htmlFor="amount" className="block text-sm font-medium text-text-secondary mb-1">
-                Amount
+                Valor
               </label>
               <input
                 type="number"
@@ -122,7 +122,7 @@ const IncomeForm: React.FC<IncomeFormProps> = ({ income, onClose }) => {
             
             <div>
               <label htmlFor="date" className="block text-sm font-medium text-text-secondary mb-1">
-                Date
+                Data
               </label>
               <input
                 type="date"
@@ -137,7 +137,7 @@ const IncomeForm: React.FC<IncomeFormProps> = ({ income, onClose }) => {
             
             <div>
               <label htmlFor="receivedBy" className="block text-sm font-medium text-text-secondary mb-1">
-                Received By
+                Recebido por
               </label>
               <select
                 id="receivedBy"
@@ -146,15 +146,15 @@ const IncomeForm: React.FC<IncomeFormProps> = ({ income, onClose }) => {
                 onChange={handleChange}
                 className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-primary"
               >
-                <option value="partner1">Partner 1</option>
-                <option value="partner2">Partner 2</option>
-                <option value="shared">Shared</option>
+                <option value="partner1">Parceiro 1</option>
+                <option value="partner2">Parceiro 2</option>
+                <option value="shared">Compartilhado</option>
               </select>
             </div>
             
             <div>
               <label htmlFor="category" className="block text-sm font-medium text-text-secondary mb-1">
-                Category
+                Categoria
               </label>
               <select
                 id="category"
@@ -179,7 +179,7 @@ const IncomeForm: React.FC<IncomeFormProps> = ({ income, onClose }) => {
                 className="w-4 h-4 text-primary border-gray-300 rounded focus:ring-primary"
               />
               <label htmlFor="isRecurring" className="ml-2 text-sm font-medium text-text-secondary">
-                Recurring Monthly Income
+                Receita Mensal Recorrente
               </label>
             </div>
             
@@ -189,13 +189,13 @@ const IncomeForm: React.FC<IncomeFormProps> = ({ income, onClose }) => {
                 onClick={onClose}
                 className="px-4 py-2 border border-gray-300 rounded-md text-text-secondary hover:bg-gray-50"
               >
-                Cancel
+                Cancelar
               </button>
               <button
                 type="submit"
                 className="px-4 py-2 bg-primary text-white rounded-md hover:bg-primary-dark"
               >
-                {income ? 'Update' : 'Add'} Income
+                {income ? 'Atualizar' : 'Adicionar'} Receita
               </button>
             </div>
           </div>

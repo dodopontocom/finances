@@ -11,12 +11,12 @@ const FinancialSummary: React.FC = () => {
     <div className="bg-white rounded-lg shadow p-4 mb-6 animate-fade-in">
       <h2 className="text-lg font-semibold mb-3 flex items-center">
         <Calendar size={18} className="mr-2 text-secondary" />
-        {currentMonth} Summary
+        Resumo de {currentMonth}
       </h2>
       
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
         <div className="bg-secondary/10 rounded-lg p-3">
-          <p className="text-sm text-text-secondary">Total Income</p>
+          <p className="text-sm text-text-secondary">Receita Total</p>
           <p className="text-xl font-semibold text-primary flex items-center">
             <TrendingUp size={18} className="mr-1" />
             {formatCurrency(totalIncome)}
@@ -24,7 +24,7 @@ const FinancialSummary: React.FC = () => {
         </div>
         
         <div className="bg-danger/10 rounded-lg p-3">
-          <p className="text-sm text-text-secondary">Total Expenses</p>
+          <p className="text-sm text-text-secondary">Despesas Totais</p>
           <p className="text-xl font-semibold text-danger flex items-center">
             <TrendingDown size={18} className="mr-1" />
             {formatCurrency(totalExpenses)}
@@ -32,7 +32,7 @@ const FinancialSummary: React.FC = () => {
         </div>
         
         <div className={`${balance >= 0 ? 'bg-primary/10' : 'bg-danger/10'} rounded-lg p-3`}>
-          <p className="text-sm text-text-secondary">Balance</p>
+          <p className="text-sm text-text-secondary">Saldo</p>
           <p className={`text-xl font-semibold ${balance >= 0 ? 'text-primary' : 'text-danger'}`}>
             {formatCurrency(balance)}
           </p>
@@ -43,7 +43,7 @@ const FinancialSummary: React.FC = () => {
         <div className="mt-4 p-3 bg-warning/10 rounded-lg">
           <p className="text-sm font-medium text-danger flex items-center">
             <TrendingDown size={16} className="mr-1" />
-            Your balance will go negative on {formatDate(negativeDate)}
+            Seu saldo ficará negativo em {formatDate(negativeDate)}
           </p>
         </div>
       )}
@@ -52,7 +52,7 @@ const FinancialSummary: React.FC = () => {
         <div className="mt-4 p-3 bg-primary/10 rounded-lg">
           <p className="text-sm font-medium text-primary flex items-center">
             <TrendingUp size={16} className="mr-1" />
-            You'll maintain a positive balance throughout the month
+            Você manterá um saldo positivo durante todo o mês
           </p>
         </div>
       )}

@@ -26,7 +26,7 @@ const Header: React.FC<HeaderProps> = ({ activeTab, onTabChange }) => {
                   : 'text-text-secondary hover:bg-gray-100'
               }`}
             >
-              Expenses
+              Despesas
             </button>
             <button
               onClick={() => onTabChange('income')}
@@ -36,7 +36,7 @@ const Header: React.FC<HeaderProps> = ({ activeTab, onTabChange }) => {
                   : 'text-text-secondary hover:bg-gray-100'
               }`}
             >
-              Income
+              Entradas
             </button>
           </nav>
         </div>

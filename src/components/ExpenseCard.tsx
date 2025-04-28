@@ -35,10 +35,10 @@ const ExpenseCard: React.FC<ExpenseCardProps> = ({ expense, onEdit }) => {
       <div className="flex items-center justify-between mt-3">
         <div className="flex flex-col text-sm">
           <div className="flex items-center gap-1 text-text-secondary">
-            <span>Due: {formatDate(expense.dueDate)}</span>
+            <span>Vencimento: {formatDate(expense.dueDate)}</span>
             {expense.status !== 'paid' && expense.status !== 'overdue' && (
               <span className="text-xs text-text-secondary">
-                {daysUntil === 0 ? '(Today)' : `(in ${daysUntil} days)`}
+                {daysUntil === 0 ? '(Hoje)' : `(em ${daysUntil} dias)`}
               </span>
             )}
           </div>
@@ -52,7 +52,7 @@ const ExpenseCard: React.FC<ExpenseCardProps> = ({ expense, onEdit }) => {
             <button 
               onClick={handleMarkAsPaid}
               className="p-1.5 rounded-full text-primary hover:bg-primary hover:text-white transition-colors"
-              title="Mark as paid"
+              title="Marcar como pago"
             >
               <CheckCircle size={18} />
             </button>
@@ -60,15 +60,15 @@ const ExpenseCard: React.FC<ExpenseCardProps> = ({ expense, onEdit }) => {
           <button 
             onClick={() => onEdit(expense)}
             className="p-1.5 rounded-full text-secondary hover:bg-secondary hover:text-white transition-colors"
-            title="Edit expense"
+            title="Editar despesa"
           >
             <Edit size={18} />
           </button>
           <button 
             onClick={() => deleteExpense(expense.id)}
             className="p-1.5 rounded-full text-danger hover:bg-danger hover:text-white transition-colors"
-            title="Delete expense"
-          >
+            title="Excluir despesa"
+            >
             <Trash2 size={18} />
           </button>
         </div>

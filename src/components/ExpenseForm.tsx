@@ -16,12 +16,12 @@ const ExpenseForm: React.FC<ExpenseFormProps> = ({ expense, onClose }) => {
     dueDate: new Date().toISOString().split('T')[0],
     paidBy: 'shared',
     status: 'pending',
-    category: 'Other',
+    category: 'Outros',
   });
 
   const categories = [
-    'Housing', 'Utilities', 'Groceries', 'Transportation', 
-    'Healthcare', 'Entertainment', 'Dining', 'Insurance', 'Other'
+    'Moradia', 'Utilidades', 'Mercado', 'Transporte', 
+    'Saúde', 'Lazer', 'Alimentação', 'Seguros', 'Outros'
   ];
 
   useEffect(() => {
@@ -70,7 +70,7 @@ const ExpenseForm: React.FC<ExpenseFormProps> = ({ expense, onClose }) => {
       <div className="bg-white rounded-lg shadow-lg w-full max-w-md animate-slide-up overflow-hidden">
         <div className="flex justify-between items-center border-b p-4">
           <h2 className="text-xl font-semibold">
-            {expense ? 'Edit Expense' : 'Add New Expense'}
+            {expense ? 'Editar Despesa' : 'Adicionar Nova Despesa'}
           </h2>
           <button 
             onClick={onClose}
@@ -84,7 +84,7 @@ const ExpenseForm: React.FC<ExpenseFormProps> = ({ expense, onClose }) => {
           <div className="space-y-4">
             <div>
               <label htmlFor="description" className="block text-sm font-medium text-text-secondary mb-1">
-                Description
+                Descrição
               </label>
               <input
                 type="text"
@@ -99,7 +99,7 @@ const ExpenseForm: React.FC<ExpenseFormProps> = ({ expense, onClose }) => {
             
             <div>
               <label htmlFor="amount" className="block text-sm font-medium text-text-secondary mb-1">
-                Amount
+                Valor
               </label>
               <input
                 type="number"
@@ -116,7 +116,7 @@ const ExpenseForm: React.FC<ExpenseFormProps> = ({ expense, onClose }) => {
             
             <div>
               <label htmlFor="dueDate" className="block text-sm font-medium text-text-secondary mb-1">
-                Due Date
+                Data de Vencimento
               </label>
               <input
                 type="date"
@@ -131,7 +131,7 @@ const ExpenseForm: React.FC<ExpenseFormProps> = ({ expense, onClose }) => {
             
             <div>
               <label htmlFor="paidBy" className="block text-sm font-medium text-text-secondary mb-1">
-                Paid By
+                Pago por
               </label>
               <select
                 id="paidBy"
@@ -140,15 +140,15 @@ const ExpenseForm: React.FC<ExpenseFormProps> = ({ expense, onClose }) => {
                 onChange={handleChange}
                 className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-primary"
               >
-                <option value="partner1">Partner 1</option>
-                <option value="partner2">Partner 2</option>
-                <option value="shared">Shared</option>
+                <option value="partner1">Parceiro 1</option>
+                <option value="partner2">Parceiro 2</option>
+                <option value="shared">Compartilhado</option>
               </select>
             </div>
             
             <div>
               <label htmlFor="category" className="block text-sm font-medium text-text-secondary mb-1">
-                Category
+                Categoria
               </label>
               <select
                 id="category"
@@ -175,10 +175,10 @@ const ExpenseForm: React.FC<ExpenseFormProps> = ({ expense, onClose }) => {
                   onChange={handleChange}
                   className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-primary"
                 >
-                  <option value="pending">Pending</option>
-                  <option value="upcoming">Upcoming</option>
-                  <option value="overdue">Overdue</option>
-                  <option value="paid">Paid</option>
+                  <option value="pending">Pendente</option>
+                  <option value="upcoming">Futuro</option>
+                  <option value="overdue">Atrasado</option>
+                  <option value="paid">Pago</option>
                 </select>
               </div>
             )}
@@ -189,13 +189,13 @@ const ExpenseForm: React.FC<ExpenseFormProps> = ({ expense, onClose }) => {
                 onClick={onClose}
                 className="px-4 py-2 border border-gray-300 rounded-md text-text-secondary hover:bg-gray-50"
               >
-                Cancel
+                Cancelar
               </button>
               <button
                 type="submit"
                 className="px-4 py-2 bg-primary text-white rounded-md hover:bg-primary-dark"
               >
-                {expense ? 'Update' : 'Add'} Expense
+                {expense ? 'Atualizar' : 'Adicionar'} Despesa
               </button>
             </div>
           </div>

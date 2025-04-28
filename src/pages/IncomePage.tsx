@@ -34,19 +34,19 @@ const IncomePage: React.FC = () => {
       <FinancialSummary />
       
       <div className="flex justify-between items-center mb-6">
-        <h2 className="text-xl font-semibold text-text-primary">Income</h2>
+        <h2 className="text-xl font-semibold text-text-primary">Entrada</h2>
         <button
           onClick={() => setShowForm(true)}
           className="flex items-center px-4 py-2 bg-primary text-white rounded-md hover:bg-primary-dark transition-colors"
         >
           <Plus size={18} className="mr-1" />
-          Add Income
+          Adicionar Entrada
         </button>
       </div>
       
       {currentMonthIncomes.length === 0 ? (
         <div className="bg-white rounded-lg shadow p-8 text-center">
-          <p className="text-text-secondary">No income entries found for this month.</p>
+          <p className="text-text-secondary">Nenhuma receita encontrada este mês.</p>
         </div>
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">

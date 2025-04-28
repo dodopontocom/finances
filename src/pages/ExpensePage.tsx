@@ -27,7 +27,7 @@ const ExpensePage: React.FC = () => {
     ? filteredExpenses()
     : filteredExpenses(activeFilter);
 
-  // Calculate counts for filter badges
+  // Calcula contagens para os filtros
   const getCounts = () => {
     const counts: Record<TransactionStatus | 'all', number> = {
       all: filteredExpenses().length,
@@ -44,13 +44,13 @@ const ExpensePage: React.FC = () => {
       <FinancialSummary />
       
       <div className="flex justify-between items-center mb-6">
-        <h2 className="text-xl font-semibold text-text-primary">Expenses</h2>
+        <h2 className="text-xl font-semibold text-text-primary">Despesas</h2>
         <button
           onClick={() => setShowForm(true)}
           className="flex items-center px-4 py-2 bg-primary text-white rounded-md hover:bg-primary-dark transition-colors"
         >
           <Plus size={18} className="mr-1" />
-          Add Expense
+          Adicionar Despesa
         </button>
       </div>
       
@@ -62,7 +62,7 @@ const ExpensePage: React.FC = () => {
       
       {displayExpenses.length === 0 ? (
         <div className="bg-white rounded-lg shadow p-8 text-center">
-          <p className="text-text-secondary">No expenses found for the selected filter.</p>
+          <p className="text-text-secondary">Nenhuma despesa encontrada para o filtro selecionado.</p>
         </div>
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
