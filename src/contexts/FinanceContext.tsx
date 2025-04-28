@@ -57,7 +57,7 @@ const initialExpenses: Expense[] = [
 const initialIncomes: Income[] = [
   {
     id: generateId(),
-    description: 'Salary - Partner 1',
+    description: 'Salary - Thaís',
     amount: 3500,
     date: '2025-04-05',
     receivedBy: 'partner1',
@@ -67,7 +67,7 @@ const initialIncomes: Income[] = [
   },
   {
     id: generateId(),
-    description: 'Salary - Partner 2',
+    description: 'Salary - Rodolfo',
     amount: 4000,
     date: '2025-04-10',
     receivedBy: 'partner2',

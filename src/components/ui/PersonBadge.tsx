@@ -9,8 +9,8 @@ interface PersonBadgeProps {
 
 const PersonBadge: React.FC<PersonBadgeProps> = ({ person, type = 'payer' }) => {
   const personLabels: Record<PaymentPerson, string> = {
-    partner1: 'Partner 1',
-    partner2: 'Partner 2',
+    partner1: 'Thaís',
+    partner2: 'Rodolfo',
     shared: 'Shared',
   };
 

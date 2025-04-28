@@ -140,8 +140,8 @@ const ExpenseForm: React.FC<ExpenseFormProps> = ({ expense, onClose }) => {
                 onChange={handleChange}
                 className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-primary"
               >
-                <option value="partner1">Parceiro 1</option>
-                <option value="partner2">Parceiro 2</option>
+                <option value="partner1">Thaís</option>
+                <option value="partner2">Rodolfo</option>
                 <option value="shared">Compartilhado</option>
               </select>
             </div>
