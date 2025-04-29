@@ -14,7 +14,7 @@ const Header: React.FC<HeaderProps> = ({ activeTab, onTabChange }) => {
         <div className="flex justify-between items-center py-4">
           <div className="flex items-center">
             <CreditCard className="h-8 w-8 text-primary" />
-            <h1 className="ml-2 text-xl font-semibold text-text-primary">CoupleFinance</h1>
+            <h1 className="ml-2 text-xl font-semibold text-text-primary">C.O.N.tas</h1>
           </div>
           
           <nav className="flex space-x-1">
