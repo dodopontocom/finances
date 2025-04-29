@@ -24,32 +24,32 @@ const FinanceContext = createContext<FinanceContextType | undefined>(undefined);
 const initialExpenses: Expense[] = [
   {
     id: generateId(),
-    description: 'Rent',
-    amount: 1200,
+    description: 'Aluguel',
+    amount: 2500, // Valor em reais
     dueDate: '2025-04-01',
     paidBy: 'shared',
     status: 'pending',
-    category: 'Housing',
+    category: 'Moradia',
     createdAt: new Date().toISOString(),
   },
   {
     id: generateId(),
-    description: 'Electricity Bill',
-    amount: 85,
+    description: 'Conta de Luz',
+    amount: 350,
     dueDate: '2025-04-15',
     paidBy: 'partner1',
     status: 'pending',
-    category: 'Utilities',
+    category: 'Utilidades',
     createdAt: new Date().toISOString(),
   },
   {
     id: generateId(),
     description: 'Internet',
-    amount: 60,
+    amount: 120,
     dueDate: '2025-04-10',
     paidBy: 'partner2',
     status: 'paid',
-    category: 'Utilities',
+    category: 'Utilidades',
     createdAt: new Date().toISOString(),
   },
 ];
@@ -57,21 +57,21 @@ const initialExpenses: Expense[] = [
 const initialIncomes: Income[] = [
   {
     id: generateId(),
-    description: 'Salary - Thaís',
-    amount: 3500,
+    description: 'Salário - Thaís',
+    amount: 5500,
     date: '2025-04-05',
     receivedBy: 'partner1',
-    category: 'Salary',
+    category: 'Salário',
     isRecurring: true,
     createdAt: new Date().toISOString(),
   },
   {
     id: generateId(),
-    description: 'Salary - Rodolfo',
-    amount: 4000,
+    description: 'Salário - Rodolfo',
+    amount: 7000,
     date: '2025-04-10',
     receivedBy: 'partner2',
-    category: 'Salary',
+    category: 'Salário',
     isRecurring: true,
     createdAt: new Date().toISOString(),
   },
@@ -138,7 +138,7 @@ export const FinanceProvider: React.FC<{ children: React.ReactNode }> = ({ child
   const filteredExpenses = (status?: TransactionStatus) => {
     // First filter by current month
     const monthExpenses = expenses.filter(
-      expense => new Date(expense.dueDate).toLocaleDateString('en-US', { month: 'long', year: 'numeric' }) === currentMonth
+      expense => new Date(expense.dueDate).toLocaleDateString('pt-BR', { month: 'long', year: 'numeric' }) === currentMonth
     );
     
     // Then filter by status if provided

@@ -23,7 +23,7 @@ const IncomePage: React.FC = () => {
 
   // Filter incomes for current month
   const currentMonthIncomes = incomes.filter(
-    income => new Date(income.date).toLocaleDateString('en-US', { 
+    income => new Date(income.date).toLocaleDateString('pt-BR', { 
       month: 'long', 
       year: 'numeric'
     }) === currentMonth

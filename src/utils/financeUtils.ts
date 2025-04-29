@@ -29,39 +29,41 @@ export const calculateMonthlySummary = (
   incomes: Income[],
   month: string
 ): FinancialSummary => {
-  // Filter for current month
+  // Filter for current month - agora usando pt-BR
   const monthExpenses = expenses.filter(
-    expense => new Date(expense.dueDate).toLocaleDateString('en-US', { month: 'long', year: 'numeric' }) === month
+    expense => new Date(expense.dueDate).toLocaleDateString('pt-BR', { month: 'long', year: 'numeric' }) === month
   );
   
   const monthIncomes = incomes.filter(
-    income => new Date(income.date).toLocaleDateString('en-US', { month: 'long', year: 'numeric' }) === month
+    income => new Date(income.date).toLocaleDateString('pt-BR', { month: 'long', year: 'numeric' }) === month
   );
 
   const totalIncome = monthIncomes.reduce((sum, income) => sum + income.amount, 0);
   const totalExpenses = monthExpenses.reduce((sum, expense) => sum + expense.amount, 0);
   const balance = totalIncome - totalExpenses;
 
-  // Calculate when balance will go negative (if it will)
   let negativeDate: string | null = null;
 
   if (balance < 0) {
-    // Create a day-by-day calculation
+    // Criar cálculo dia a dia
+    const [monthName, year] = month.split(' de ');
+    const monthIndex = new Date(`${monthName} 1, ${year}`).getMonth();
+    
     const daysInMonth = new Date(
-      parseInt(month.split(' ')[1]), 
-      new Date().getMonth() + 1, 
+      parseInt(year), 
+      monthIndex + 1, 
       0
     ).getDate();
     
     let runningBalance = 0;
     
-    // Sort all transactions by date
+    // Ordenar todas as transações por data
     const allTransactions = [
       ...monthIncomes.map(income => ({ date: income.date, amount: income.amount, type: 'income' })),
       ...monthExpenses.map(expense => ({ date: expense.dueDate, amount: -expense.amount, type: 'expense' }))
     ].sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime());
     
-    // Find the first day balance goes negative
+    // Encontrar o primeiro dia em que o saldo fica negativo
     for (const transaction of allTransactions) {
       runningBalance += transaction.amount;
       if (runningBalance < 0 && !negativeDate) {
