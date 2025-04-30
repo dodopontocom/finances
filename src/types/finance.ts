@@ -11,6 +11,7 @@ export interface Expense {
   status: TransactionStatus;
   category: string;
   createdAt: string;
+  _id?: any; // Adicionado para o MongoDB
 }
 
 export interface Income {
@@ -22,6 +23,7 @@ export interface Income {
   category: string;
   isRecurring: boolean;
   createdAt: string;
+  _id?: any; // Adicionado para o MongoDB
 }
 
 export interface FinancialSummary {
