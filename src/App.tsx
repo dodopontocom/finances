@@ -3,6 +3,8 @@ import Header from './components/Header';
 import ExpensePage from './pages/ExpensePage';
 import IncomePage from './pages/IncomePage';
 import { FinanceProvider } from './contexts/FinanceContext';
+import { promisify } from 'util'; // isso só deve ser usado em código backend
+
 
 function App() {
   const [activeTab, setActiveTab] = useState('expenses');
