@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nova Conta</title>
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+<body>
+  <h1>+ Nova Conta</h1>
+  <form action="/contas" method="POST" class="formulario">
+    <input type="text" name="nome" placeholder="Nome da conta" required />
+    <input type="text" name="vencimento" placeholder="Data de vencimento" required />
+    <input type="number" step="0.01" name="valor" placeholder="Valor" required />
+    <select name="status">
+      <option value="pendente">Pendente</option>
+      <option value="pago">Pago</option>
+      <option value="atrasado">Atrasado</option>
+    </select>
+    <button type="submit">Salvar</button>
+  </form>
+  <a href="/contas">← Voltar</a>
+</body>
+</html>
+

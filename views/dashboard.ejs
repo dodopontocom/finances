@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dashboard - Controle de Contas</title>
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+<body>
+  <header>
+    <h1>💸 Controle de Contas</h1>
+    <a href="/contas/nova" class="botao-novo">+ Nova Conta</a>
+    <a href="/logout" class="botao-novo" style="background: #E85D75;">Sair</a>
+  </header>
+  <form method="GET" action="/contas" class="form-filtro">
+    <select name="status" onchange="this.form.submit()">
+      <option value="">Todas</option>
+      <option value="pendente" <%= filtro === 'pendente' ? 'selected' : '' %>>Pendente</option>
+      <option value="pago" <%= filtro === 'pago' ? 'selected' : '' %>>Pago</option>
+      <option value="atrasado" <%= filtro === 'atrasado' ? 'selected' : '' %>>Atrasado</option>
+    </select>
+  </form>
+
+  <main class="card-container">
+    <% contas.forEach(conta => { %>
+      <div class="card">
+        <h2><%= conta.nome %></h2>
+        <p>Vencimento: <%= conta.vencimento %></p>
+        <p class="valor">R$ <%= conta.valor.toFixed(2) %></p>
+        <p class="status <%= conta.status %>"><%= conta.status %></p>
+        <div class="acoes">
+          <a href="/contas/<%= conta._id %>/editar">✏️ Editar</a>
+          <form action="/contas/<%= conta._id %>/excluir" method="POST" onsubmit="return confirm('Tem certeza que deseja excluir?')">
+            <button type="submit">🗑️ Excluir</button>
+          </form>
+        </div>
+      </div>
+    <% }) %>
+  </main>
+</body>
+</html>
