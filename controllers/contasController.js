@@ -1,14 +1,27 @@
 const Conta = require('../models/Conta');
+const Entrada = require('../models/Entrada');
 
 async function listarContas(req, res) {
   const filtro = req.query.status;
   let query = {};
-  if (filtro) {
-    query.status = filtro;
-  }
+  if (filtro) query.status = filtro;
+
   const contas = await Conta.find(query).sort({ vencimento: 1 });
-  res.render('dashboard', { contas, filtro });
+  const entradas = await Entrada.find().sort({ data: -1 });
+
+  const receitaTotal = entradas.reduce((soma, e) => soma + e.valor, 0);
+  const contasPagas = await Conta.find({ status: 'pago' });
+  const gastosTotais = contasPagas.reduce((soma, c) => soma + c.valor, 0);
+
+  res.render('dashboard', {
+    contas,
+    entradas,
+    filtro,
+    receitaTotal,
+    gastosTotais
+  });
 }
+
 
 async function mostrarFormularioCriar(req, res) {
   res.render('novaConta');

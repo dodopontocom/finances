@@ -1,41 +1,91 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Dashboard - Controle de Contas</title>
-  <link rel="stylesheet" href="/css/style.css" />
+  <meta charset="UTF-8">
+  <title>Dashboard</title>
+  <link rel="stylesheet" href="/css/style.css">
+  <script>
+    function alternar(tipo) {
+      document.getElementById('contas-section').style.display = tipo === 'contas' ? 'block' : 'none';
+      document.getElementById('entradas-section').style.display = tipo === 'entradas' ? 'block' : 'none';
+
+      document.getElementById('btn-contas').classList.toggle('ativo', tipo === 'contas');
+      document.getElementById('btn-entradas').classList.toggle('ativo', tipo === 'entradas');
+    }
+
+    window.onload = () => {
+      alternar('contas'); // mostra contas por padrão
+    };
+  </script>
 </head>
 <body>
-  <header>
-    <h1>💸 Controle de Contas</h1>
-    <a href="/contas/nova" class="botao-novo">+ Nova Conta</a>
-    <a href="/logout" class="botao-novo" style="background: #E85D75;">Sair</a>
-  </header>
-  <form method="GET" action="/contas" class="form-filtro">
-    <select name="status" onchange="this.form.submit()">
-      <option value="">Todas</option>
-      <option value="pendente" <%= filtro === 'pendente' ? 'selected' : '' %>>Pendente</option>
-      <option value="pago" <%= filtro === 'pago' ? 'selected' : '' %>>Pago</option>
-      <option value="atrasado" <%= filtro === 'atrasado' ? 'selected' : '' %>>Atrasado</option>
-    </select>
-  </form>
+  <div class="container">
 
-  <main class="card-container">
-    <% contas.forEach(conta => { %>
-      <div class="card">
-        <h2><%= conta.nome %></h2>
-        <p>Vencimento: <%= conta.vencimento %></p>
-        <p class="valor">R$ <%= conta.valor.toFixed(2) %></p>
-        <p class="status <%= conta.status %>"><%= conta.status %></p>
-        <div class="acoes">
-          <a href="/contas/<%= conta._id %>/editar">✏️ Editar</a>
-          <form action="/contas/<%= conta._id %>/excluir" method="POST" onsubmit="return confirm('Tem certeza que deseja excluir?')">
-            <button type="submit">🗑️ Excluir</button>
+    <h1>Dashboard</h1>
+
+    <!-- Botões de alternância -->
+    <div class="alternar">
+      <button id="btn-contas" onclick="alternar('contas')">💳 Contas</button>
+      <button id="btn-entradas" onclick="alternar('entradas')">💰 Entradas</button>
+    </div>
+
+    <!-- Cards resumo -->
+    <div class="resumo">
+      <div class="card-resumo receita">
+        <h3>Receita</h3>
+        <p>R$ <%= receitaTotal.toFixed(2) %></p>
+      </div>
+      <div class="card-resumo gastos">
+        <h3>Gastos</h3>
+        <p>R$ <%= gastosTotais.toFixed(2) %></p>
+      </div>
+      <div class="card-resumo saldo">
+        <h3>Saldo Atual</h3>
+        <p>R$ <%= (receitaTotal - gastosTotais).toFixed(2) %></p>
+      </div>
+    </div>
+
+    <!-- Seção: Contas -->
+    <div id="contas-section">
+      <a href="/contas/nova" class="botao-novo">+ Nova Conta</a>
+
+      <div class="filtros">
+        <a href="/">Todas</a>
+        <a href="/?status=pago">Pagas</a>
+        <a href="/?status=pendente">Pendentes</a>
+      </div>
+
+      <% contas.forEach(conta => { %>
+        <div class="card">
+          <h3><%= conta.nome %></h3>
+          <p>Valor: R$ <%= conta.valor.toFixed(2) %></p>
+          <p>Vencimento: <%= new Date(conta.vencimento).toLocaleDateString() %></p>
+          <p>Status: <%= conta.status %></p>
+          <form action="/contas/<%= conta._id %>/status" method="POST">
+            <button type="submit">
+              Marcar como <%= conta.status === 'pendente' ? 'Pago' : 'Pendente' %>
+            </button>
           </form>
         </div>
-      </div>
-    <% }) %>
-  </main>
+      <% }) %>
+    </div>
+
+    <!-- Seção: Entradas -->
+    <div id="entradas-section" style="display: none;">
+      <a href="/entradas/nova" class="botao-novo">+ Nova Entrada</a>
+
+      <% entradas.forEach(entrada => { %>
+        <div class="card">
+          <h3><%= entrada.descricao %></h3>
+          <p>Valor: R$ <%= entrada.valor.toFixed(2) %></p>
+          <p>Data: <%= new Date(entrada.data).toLocaleDateString() %></p>
+          <form action="/entradas/<%= entrada._id %>/deletar" method="POST">
+            <button type="submit">Excluir</button>
+          </form>
+        </div>
+      <% }) %>
+    </div>
+
+  </div>
 </body>
 </html>

@@ -1,0 +1,14 @@
+<h2>Entradas</h2>
+<a href="/entradas/nova" class="botao-novo">+ Nova Entrada</a>
+
+<% entradas.forEach(entrada => { %>
+  <div class="card">
+    <h3><%= entrada.descricao %></h3>
+    <p>Valor: R$ <%= entrada.valor.toFixed(2) %></p>
+    <p>Data: <%= new Date(entrada.data).toLocaleDateString() %></p>
+    <form action="/entradas/<%= entrada._id %>/deletar" method="POST">
+      <button type="submit">Excluir</button>
+    </form>
+  </div>
+<% }) %>
+

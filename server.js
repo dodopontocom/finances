@@ -52,9 +52,14 @@ function verificarLogin(req, res, next) {
 // Rotas
 const authRoutes = require('./routes/auth');
 const contasRoutes = require('./routes/contas');
+const entradasRoutes = require('./routes/entradas');
+const methodOverride = require('method-override');
+
 
 app.use(authRoutes);
 app.use('/contas', verificarLogin, contasRoutes);
+app.use(entradasRoutes);
+app.use(methodOverride('_method'));
 
 // Inicialização
 const PORT = process.env.PORT || 3000;

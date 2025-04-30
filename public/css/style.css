@@ -132,3 +132,43 @@ h1 {
   border-radius: 8px;
   border: 1px solid var(--cinza);
 }
+
+.resumo {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.card-resumo {
+  flex: 1;
+  min-width: 200px;
+  padding: 1rem;
+  border-radius: 12px;
+  color: #fff;
+  text-align: center;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+.card-resumo.receita { background: #40F99B; }
+.card-resumo.gastos { background: #E85D75; }
+.card-resumo.saldo { background: #9D69A3; }
+
+.alternar {
+  margin-bottom: 1rem;
+}
+
+.alternar button {
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 8px;
+  margin-right: 0.5rem;
+  cursor: pointer;
+  background: #61707D;
+  color: #fff;
+  font-weight: bold;
+}
+
+.alternar button.ativo {
+  background: #40F99B;
+}
